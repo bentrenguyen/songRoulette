@@ -18,8 +18,8 @@ var l = '';
 var aP = 0;
 var r = 0;
 var s = 20;
-var h = '360';
-var w = '360';
+var h = '0';
+var w = '0';
 
 var playing = false;
 var showing = false;
@@ -50,6 +50,7 @@ document.getElementById("playlistInput").addEventListener('keyup', event => {
     firstPlay = true;
     document.querySelector('#loadMsg').innerText = "Playlist loading...";
     document.querySelector("#loadMsg").style.color = "#ededed";
+    titleList = ["", "", "", ""];
   }
 })
 
@@ -83,6 +84,7 @@ function onPlayerStateChange(event) {
   if (event.data == 1) {
     document.querySelector('#loadMsg').innerText = "Playing...";
     document.querySelector("#loadMsg").style.color = "#ededed";
+    getTitles();
   }
   if (event.data == 2) {
     document.querySelector('#loadMsg').innerText = "Paused";
@@ -190,11 +192,12 @@ function shuffle(first=false) {
   
   var playerList = [player1, player2, player3, player4];
   if (!first) {
-    playerList.forEach(pauseFn);
+    playerList.forEach(pauseFn); 
   }
   if (first) {
-    getTitles();
+    playerList.forEach(unmutePlayer);
   }
+  
 
   player1.seekTo(s);
   player2.seekTo(s);
@@ -217,10 +220,10 @@ function playPause() {
   if (firstPlay) {
     shuffle(true);
     var playerList = [player1, player2, player3, player4];
-    playerList.forEach(unmutePlayer);
+    //playerList.forEach(unmutePlayer);
     firstPlay = false;
     playing = true;
-    document.querySelector('#loadMsg').innerText = "Playing...";
+    document.querySelector('#loadMsg').innerText = "AHHHHH...";
     document.querySelector("#loadMsg").style.color = "#ededed";
     document.querySelector('#gif').src="musicPlayingGray.gif";
   } else if (player1.getPlayerState()!=1) {
