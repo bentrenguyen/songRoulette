@@ -18,8 +18,8 @@ var l = '';
 var aP = 0;
 var r = 0;
 var s = 20;
-var h = '0';
-var w = '0';
+var h = '360';
+var w = '360';
 
 var playing = false;
 var showing = false;
