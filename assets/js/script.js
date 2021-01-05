@@ -223,7 +223,6 @@ function playPause() {
     //playerList.forEach(unmutePlayer);
     firstPlay = false;
     playing = true;
-    document.querySelector('#loadMsg').innerText = "AHHHHH...";
     document.querySelector("#loadMsg").style.color = "#ededed";
     document.querySelector('#gif').src="musicPlayingGray.gif";
   } else if (player1.getPlayerState()!=1) {
